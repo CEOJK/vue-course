@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <ul>
+            <li v-for="item of mag">{{item.name | name}} , {{item | hanling}},{{ item |gender}}</li>
+        </ul>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#container",
+            data: {
+                mag: [{
+                    name: '小明',
+                    age: 18,
+                    gender: '男'
+                }, {
+                    name: '小芳',
+                    age: 17,
+                    gender: '女'
+                }, {
+                    name: '小王',
+                    age: 20,
+                    gender: '男'
+                }]
+
+
+            },
+            methods: {
+
+            },
+            filters: {
+                name(vel) {
+                    return `${vel}同学`;
+                },
+                hanling(a) {
+                    if (a.age >= 18) {
+                        return a.age;
+                    } else {
+                        return `未成年${a.age}岁`;
+                    }
+                },
+                gender(t) {
+                    let str = t.gender === "男" ? "靓仔" : "小姐姐";
+                    return `${str}`
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

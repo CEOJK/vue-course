@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <input type="text" v-model="message" placeholder="请输入">
+        <button v-model="message" @click="set">添加</button>
+        <ul>
+            <li v-for="(item, index) in mag">{{item}}</li>
+        </ul>
+        <button @click="del">删除</button>
+        <button @click="clath">清空</button>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#container',
+            data: {
+                mag: ["苹果", "香蕉", "榴莲", "葡萄"],
+                message: ''
+            },
+            methods: {
+                del() {
+                    this.mag.pop()
+                    // this.mag.$delete(this.mag,4)
+                },
+                set() {
+                    this.mag.push(this.message)
+                    // this.mag.$set(this.mag,4,this.message)
+                },
+                clath() {
+                    this.mag = [];
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
