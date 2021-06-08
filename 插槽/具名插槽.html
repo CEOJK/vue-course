@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+</head>
+
+
+<body>
+    <!--
+    有名字的插槽---具名插槽
+         slot标签有一个name属性: 就是这个slot起个名字
+         对应的组件中写一个template标签,
+            有个属性v-slot
+            v-slot:对应名字
+    没有名字的插槽---匿名插槽
+
+-->
+
+    <div id="container">
+        <headnav>
+            <template v-slot:header>
+                <h1>Here might be a page title</h1>
+            </template>
+
+            <p>A paragraph for the main content.</p>
+            <p>And another one.</p>
+
+            <template v-slot:footer>
+                <h2>Here's some contact info</h2>
+            </template>
+        </headnav>
+    </div>
+    <template id="box">
+        <div>
+            <header>
+                <slot name="header"></slot>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+        </div>
+    </template>
+    <script>
+        let aaa = {
+            template: `#box`,
+            data() {
+                return {
+                    mag: '组件分离'
+                }
+            },
+        }
+        let vm = new Vue({
+            el: '#container',
+            data: {
+
+            },
+            methods: {
+
+            },
+            components: {
+                headnav: aaa
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../instruction/vue.min.js"></script>
+    <style>
+        #input-num {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20%;
+        }
+
+        .male {
+            width: 36px;
+            height: 36px;
+            border: solid rgb(175, 175, 180) 1px;
+            border-radius: 50%;
+            position: relative;
+            left: 20px;
+            /* 去除边框 */
+            outline: none;
+        }
+
+        .female {
+            width: 36px;
+            height: 36px;
+            border: solid rgb(175, 175, 180) 1px;
+            border-radius: 50%;
+            position: relative;
+            right: 20px;
+            /* 去除边框 */
+            outline: none;
+        }
+
+        span {
+            width: 108px;
+            height: 36px;
+            background-color: rgb(175, 175, 180);
+            line-height: 36px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="input-num">
+        <button @click="sub" class="male">-</button>
+        <span>{{num}}</span>
+        <button @click="add" class="female">+</button>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#input-num',
+            data: {
+                num: 1
+            },
+            methods: {
+                add() {
+                    if (this.num < 10) {
+                        this.num++;
+                    } else {
+                        alert("到了最大值");
+                    }
+                },
+                sub() {
+                    if (this.num > 0) {
+                        this.num--
+                    } else {
+                        alert("到了最小值");
+                    }
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

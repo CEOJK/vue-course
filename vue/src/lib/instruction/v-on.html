@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+    <style>
+        #app {
+            border: blue dashed 1px;
+            width: 150px;
+            height: 150px;
+            margin: 50px auto;
+        }
+
+        #add {
+            border: blue dashed 1px;
+            width: 430px;
+            height: 300px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        {{a}}
+        <!-- 效果相同,表现形式不同 -->
+        <button v-on:click="test()">按钮</button>
+        <button @click="test1()">按钮1</button>
+    </div>
+    <div id="add">
+        <h3>{{message}}</h3>
+        <button @click="one('参数1','参数2')">自定义参数</button>
+        <input type="text" @keyup.enter="two">
+        <h4>{{text}}</h4>
+        <h4 v-text="text1"></h4>
+        <h4 v-text="text2"></h4>
+        <h4 v-text="text3"></h4>
+        <h4 v-text="text4"></h4>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                a: 19,
+            },
+            methods: {
+                test() {
+                    alert("hello!");
+                },
+                test1() {
+                    alert("good!");
+                },
+            },
+        });
+        var vme = new Vue({
+            el: "#add",
+            data: {
+                message: "根据自定义参数，事件修饰符",
+                text: "事件绑定的方法写成函数调用的形式，可以传入自定义参数",
+                text1: "定义方法时需要定义参数来接收传入的实参",
+                text2: "事件的后面跟上 .修饰符 可以对事件进行限制",
+                text3: ".enter 可以限制触发的按键为回车",
+                text4: "事件修饰符有多种",
+            },
+            methods: {
+                one(w1, w2) {
+                    alert(w1 + " " + w2);
+                },
+                two() {
+                    alert("输入成功");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

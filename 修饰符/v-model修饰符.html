@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+        <!-- .lazy 当失去焦点是才进行渲染-->
+        <input type="text" v-model.lazy="msg" class="form-control" style="width: 300px; " placeholder="请输入内容">
+        <p>lazy:{{msg}}</p>
+        <!-- .number 将我们输入框中的内容转换成数值类型，不是数字类型的会自动清空。
+				   当先输入字符串后输入数字，就无法将字符串省略掉
+			 -->
+        <input type="text" v-model.number="msg1" class="form-control" style="width: 300px; " placeholder="请输入内容">
+        <p>number:{{msg1}}</p>
+        <!-- .trim 自动去除输入框中的首尾空格-->
+        <input type="text" v-model.trim="msg2" placeholder="请输入内容" class="form-control" style="width: 300px;" />
+        <p>trim:{{msg2}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#container',
+            data: {
+                msg: "",
+                msg1: '',
+                msg2: '',
+            },
+        })
+    </script>
+</body>
+
+</html>

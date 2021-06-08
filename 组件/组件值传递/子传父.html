@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.min.js"></script>
+</head>
+
+<body>
+    <div id="result">
+        <aaa @ff='ing'></aaa>
+        <h1 v-for='itme in msg1'>{{itme}}</h1>
+    </div>
+    <template id='aa'>
+        <div>
+            <h3>{{msg}}</h3>
+            <button @click="a">a</button>
+            <button @click="b">b</button>
+        </div>
+    </template>
+    <script>
+        let aaa = {
+            template: '#aa',
+            data() {
+                return {
+                    msg: '子组件',
+                    msg1: ['苹果', '香蕉']
+                }
+            },
+            methods: {
+                a() {
+                    this.$emit("ff", this.msg1)
+                },
+                b() {
+                    this.msg = '改变'
+                }
+            }
+        }
+
+        let vm = new Vue({
+            el: "#result",
+            data: {
+                name: "父组件"
+            },
+            components: {
+                aaa
+            },
+            methods: {
+                ing(msg1) {
+                    this.name = msg1;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

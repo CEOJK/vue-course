@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{msg}}</h2>
+        <h2>{{msg1}}</h2>
+        <button @click="add">点击</button>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '刘峰',
+                msg1: 19
+            }
+        })
+        // 触发$on 接收自定义事件
+        vm.$on('text', function (...d) {
+            console.log(...d);
+            this.msg = d[0],
+                this.msg1 = d[1]
+        })
+        // 点击发射自定义事件
+        function add() {
+            vm.$emit('text', '罗峰', 20)
+        }
+    </script>
+</body>
+
+</html>

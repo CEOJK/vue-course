@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+    <style>
+        /* 显示/影藏的过渡效果 */
+        .doing-enter-active,
+        .doing-enter-active {
+            transition: opacity 3s;
+        }
+
+        /* 影藏时的样式 */
+        .doing-enter,
+        .doing-leave-to {
+            opacity: 0;
+        }
+
+        /* 显示的过渡效果 */
+        .move-enter-active {
+            transition: all 1s;
+        }
+
+        /* 影藏的过滤效果 */
+        .move-leave-active {
+            transition: all 3s;
+        }
+
+        .move-enter,
+        .move-leave-to {
+            opacity: 0;
+            transform: translateX(20px);
+
+        }
+    </style>
+</head>
+<!-- 1. vue动画的理解
+          操作css的rasition或animation
+          vue会给目标元素添加/移除特定的class
+       2. 基本过渡动画的编码
+            1). 在目标元素外包裹<transition name=""></transition>
+            2). 定义class样式
+                  1>. 指定过渡样式: transition
+                  2>. 指定影藏时的样式: opacity/ 其他
+       3. 过渡的类名
+             doing-enter-active: 指定显示的transition
+             doing-leave-active: 指定影藏的transition
+             doing-enter: 指定影藏的样式
+     -->
+
+<body>
+    <div id="demo">
+        <button @click="isshow=!isshow">toggle</button>
+        <transition name="doing">
+            <p v-show="isshow" class="doing-enter-to">hello</p>
+        </transition>
+        <button @click="isShow=!isShow">toggle</button>
+        <transition name="move">
+            <p v-show="isShow" class="move-enter-to">hellowrold</p>
+        </transition>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data() {
+                return {
+                    isshow: true,
+                    isShow: true,
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

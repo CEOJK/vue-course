@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.js"></script>
+</head>
+
+<body>
+    <div id="test">
+        <h2>
+            显示格式化的日期时间
+        </h2>
+        <p>{{massage}}</p>
+        <p>{{massage | dateString}}</p>
+        <p>年月日:{{massage | dateString('YYYY-MM-DD')}}</p>
+    </div>
+    <script>
+        // 自定义过滤
+        // dateString表示过滤器名字
+        // 第一个参数表示将要过滤的数据 massage
+        // 第二个参数表示要传入的指定格式 
+        Vue.filter('dateString', function (value, formats) {
+            return moment().format(formats || 'YYYY-MM-DD HH:mm:ss');
+        })
+        var vm = new Vue({
+            el: '#test',
+            data: {
+                massage: new Date()
+            }
+        })
+    </script>
+</body>
+
+</html>

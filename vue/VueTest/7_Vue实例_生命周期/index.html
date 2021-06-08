@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="C:\Users\Administrator\Desktop\vue\src\vue.min.js"></script>
+    <script src="../../../vue.min.js"></script>
+</head>
+
+<body>
+    <!-- 三个阶段
+          初始化显示
+          更新显示
+          死亡
+     -->
+    <!-- 
+         1.vue对象的生命周期
+           1). 初始化显示
+               beforeCreate()
+               created()
+               beforeMount()
+               mounted()
+            2). 更新状态
+               beforeUpdate()
+               updated()
+            3). 销毁vue实例，vm.$destory()
+                beforeDestory()
+                destoryed()
+         2. 常用的生命周期方法
+         created()/mounted(): 发送ajax请求，启动定时器等异步任务
+         beforeDestory(): 做收尾工作，如: 清除定时器
+       -->
+    <div id="text">
+        <button @click='destoryVM'>destroy vm</button>
+        <p v-show="isSHow">生命周期</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#text',
+            data: {
+                isSHow: true
+            },
+            beforeCreate() {
+                console.log('beforeCreate()')
+            },
+            created() {
+                console.log('created()')
+            },
+            beforeMount() {
+                console.log('beforeMount()')
+            },
+            mounted() { //初始化显示之后立即调用
+                console.log('mounted()')
+                this.Interval = setInterval(() => {
+                    console.log('-------');
+                    this.isSHow = !this.isSHow
+                }, 1000)
+            },
+            //2.更新阶段
+            beforeUpdate() {
+                console.log('beforeUpdate()')
+            },
+            updated() {
+                console.log('updated()')
+            },
+            //3.死亡阶段
+            beforeDestroy() { //死亡之前调用(1次)
+                //清除定时器
+                clearInterval(this.Interval)
+            },
+            destroyed() {
+                console.log('destroyed()')
+            },
+            methods: {
+                destoryVM() {
+                    // 终止vm
+                    this.$destroy()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

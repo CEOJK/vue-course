@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="../vue.min.js"></script> -->
+</head>
+<!-- 全局组件 ：  全局组件可以插入的局部组件里，全局组件也可以有子组件
+          局部组件 ：   局部组件不能放到全局组件，局部组件还可以有子组件 -->
+
+<body>
+
+    <div id="result">
+        <wang></wang>
+        <hello></hello>
+        <p>{{mag}}</p>
+    </div>
+    <script>
+        //全局组件
+        Vue.component('wang', {
+            template: `<div>
+             <p>{{mag}}</p>
+             </div>`,
+            data() {
+                return {
+                    mag: "全局组件"
+                }
+            },
+
+        })
+        let vm = new Vue({
+            el: '#result',
+            data: {
+                mag: "罗峰"
+            },
+            //局部组件
+            components: {
+                hello: {
+                    template: `<div>
+                        <p>{{mag}}</p>
+                        <root></root>
+                        </div>`,
+                    data() {
+                        return {
+                            mag: '局部组件'
+                        }
+                    },
+                    components: {
+                        root: {
+                            template: `<div>
+                            <p>{{mag}}</p>
+                            </div>`,
+                            data() {
+                                return {
+                                    mag: '孙子组件'
+                                }
+                            },
+                        }
+                    }
+                }
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

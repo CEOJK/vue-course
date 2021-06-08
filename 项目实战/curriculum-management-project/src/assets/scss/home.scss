@@ -1,0 +1,105 @@
+.home {
+    .user {
+        display: flex;
+        // 垂直居中
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+
+        img {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            margin-right: 40px;
+
+        }
+
+        /* &info === userinfo */
+        &info {
+            .name {
+                font-size: 32px;
+                margin-bottom: 10px;
+            }
+
+            .role {
+                color: #999999;
+            }
+        }
+    }
+
+    /* 登录样式*/
+    .login-info {
+        p {
+            line-height: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #999999;
+
+            span {
+                color: #666666;
+                margin: 50px;
+            }
+        }
+    }
+
+    .num {
+        /* 订单样式*/
+        display: flex;
+        /* 弹性布局 */
+        /* flex-warp 换行，表示均匀换行 6块，上面3块、下面3块。如果只有2块，上面1块，下面1块 */
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        /*justify-content 表示两端对齐：水平对齐 */
+        .el-card {
+            width: 32%;
+            margin-bottom: 20px;
+            /* 让模块间有间隔 */
+
+        }
+
+        .icon {
+            /* 订单图标 */
+            font-size: 30px;
+            line-height: 80px;
+            width: 80px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .desc {
+            margin: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .money {
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+
+            .text {
+                font-size: 14px;
+                color: #999999;
+                text-align: center;
+            }
+        }
+    }
+
+    .graph {
+        display: flex;
+        justify-content: space-between;
+
+        .el-card {
+            width: 49%;
+            margin-top: 20px;
+        }
+    }
+
+    //   让图片文字水平对齐
+    //     .num .el-card .el-card__body {
+    //         padding: 0px;
+    //         display: flex;
+    //     }
+}

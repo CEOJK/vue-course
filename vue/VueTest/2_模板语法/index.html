@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    
+    <div id="add">
+        <h2>双大括号表达式</h2>
+        <p v-text="uesrurl"></p>
+        <p v-html="uesrurl"></p>
+        <h2>2.指令一:强制数据绑定</h2>
+            <!-- <img src="uesrimg"> -->
+            <img v-bind:src="uesrimg">
+            <img :src="uesrimg">
+        <h2>2.指令二:绑定事件监听</h2>
+             <button @click="test(uesrurl)">按钮</button>
+             <button v-on:click="test(uesrurl)">按钮</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#add',
+            data: {
+                massage: "....",
+                uesrurl: "<a href='#'>holleWorld</a>",
+                uesrimg: "../img/logo.png"
+            },
+            methods: {
+               test(a){
+                   alert(a);
+               }
+            }
+        })
+    </script>
+</body>
+
+</html>

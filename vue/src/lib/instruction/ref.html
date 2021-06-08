@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <!-- ref:指定唯一标识, vue对象通过$refs 属性访问这个元素对象 -->
+    <!-- v-cloak :使用它防止闪现表达式，与css配合:[v-cloak] { display: none } -->
+
+    <div id="test">
+        <p ref="content">agieng.com</p>
+        <button @click="hint">提示</button>
+
+        <p ref="reference">{{msg}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#test',
+            data: {
+                msg: "哈迪斯"
+            },
+            methods: {
+                hint() {
+                    alert(this.$refs.reference.textContent)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/axios@0.21.0/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <input type="button" value="get" class="get">
+    <input type="button" value="post" class="post">
+    <script>
+        document.querySelector(".get").onclick = function () {
+            axios.get("https://autumnfish.cn/api/joke/list?num=6")
+                .then(function (response) {
+                    console.log(response);
+                });
+        };
+        document.querySelector(".post").onclick = function () {
+            axios.post("https://autumnfish.cn/api/user/reg",{usermame:"张三疯"})
+                .then(function (response) {
+                    console.log(response);
+                });
+        };
+    </script>
+</body>
+
+</html>

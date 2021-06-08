@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <div id="bind">
+        <h1>{{message}}</br>{{message1}}</h1>
+        <!-- 完整的写法 v-bind:属性名="" -->
+        <input type="text" name="" id="" v-bind:placeholder="name">
+        <!-- 简写  :属性名="" -->
+        <input type="text" name="" id="" :value="nf">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#bind",
+            data: {
+                message: "设置元素的属性",
+                message1: "语法   :属性名=表达式",
+                name: "点击",
+                nf: '珠海',
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+
+</html>

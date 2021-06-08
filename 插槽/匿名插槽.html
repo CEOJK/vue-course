@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+</head>
+
+
+<body>
+
+    <div id="container">
+        <headnav>
+            Logged in as
+        </headnav>
+    </div>
+    <template id="box">
+        <div>
+            <h1>{{mag}}</h1>
+            <slot></slot>
+            <slot>
+                <!-- 组件标签没有内容的时候显示默认值 -->
+                <p>默认值</p>
+            </slot>
+        </div>
+    </template>
+    <script>
+        let aaa = {
+            template: `#box`,
+            data() {
+                return {
+                    mag: '组件分离'
+                }
+            },
+        }
+        let vm = new Vue({
+            el: '#container',
+            data: {
+
+            },
+            methods: {
+
+            },
+            components: {
+                headnav: aaa
+            }
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+         * 插槽:
+         * 使用注册组件时,直接在组件标签中写入内容是无效的
+         * 但是如果使用了slot标签的话,能够将能容显示出来
+         *
+         * slot标签里边的内容会被组件内的内容替代
+         *
+         * 组件标签之间不写内容的时候:
+         * slot标签里边的内容是默认的
+         * 组件标签之间写内容的时候 :
+         * 相当于组件之间的内容是实参 替换掉 slot标签里边的默认内容
+         *
+         * 一个插槽slot就是一个内容 (组件标签里边的内容)
+         * 两个插槽slot就是两个内容(组件里边的内容,变成两份)
+         * ........
+         * */
+    </script>
+</body>
+
+</html>

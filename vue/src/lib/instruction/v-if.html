@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <div id="v-if">
+        {{message}}
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#v-if",
+            data: {
+                message: "根据表达式的真假，切换显示与影藏(操作dom元素)",
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

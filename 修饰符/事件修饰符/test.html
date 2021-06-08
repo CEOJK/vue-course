@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet">
+    <style lang="">
+        .box {
+            width: 400px;
+            height: 200px;
+            background-color: #a907a9;
+        }
+
+        .box1 {
+            width: 400px;
+            height: 200px;
+            background-color: #4e094e;
+        }
+
+        .box2 {
+            width: 400px;
+            height: 200px;
+            background-color: #5c265c;
+        }
+
+        .outer {
+
+            width: 400px;
+            padding: 50px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .inner {
+            text-align: center;
+            margin: 0 auto;
+            width: 200px;
+            height: 100px;
+            background-color: #5c265c;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="box" @click="box">
+            <!-- .stop 阻止冒泡-->
+            <input type="button" value="点击" class="btn btn-primary" @click.stop="inp">
+            <!-- .prevent 阻止默认事件 -->
+            <!-- 修饰符可以串联 既可以阻止默认事件还可以阻止冒泡 -->
+            <a href="https://www.baidu.com" @click.stop.prevent="testlick">百度</a>
+        </div>
+        <!-- .capture 实现捕获触发事件的机制 -->
+        <div class="box1" @click.capture="box1">
+            <input type="button" value="点击" @click="inp1">
+        </div>
+
+        <!-- .self 实现当只有点击当前元素，才会触发事件处理函数 -->
+        <div class="box2" @click.self="box2">
+            <input type="button" value="戳他" @click="inp2" />
+        </div>
+
+
+        <!-- .stop和.self的区别 -->
+        <div class="outer" @click="div1Handler">
+            <!-- .self只会阻止自己身上冒泡行为的触发，不会真正阻止冒泡行为 -->
+            <div class="inner" @click.stop="div2Handler">
+                <input type="button" value="戳他" @click="bntHanderl" />
+            </div>
+        </div>
+        <!--  .once 只触发一次函数  -->
+        <a href="https://www.baidu.com/" @click.prevent.once=" testlick">有问题，找度娘</a>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#container',
+            data: {
+
+            },
+            methods: {
+                box() {
+                    console.log("这是触发了 box div事件")
+                },
+                inp() {
+                    console.log("这是触发了 bnt 事件")
+                },
+                testlick() {
+                    alert("百度一下");
+                    console.log("百度的网址：https://www.baidu.com/")
+                },
+                box1() {
+                    console.log("这是触发了 box1 div事件")
+                },
+                inp1() {
+                    console.log("这是触发了 bnt1 事件")
+                },
+
+                box2() {
+                    console.log("这是触发了 box2 div事件")
+                },
+                inp2() {
+                    console.log("这是触发了 bnt2 事件")
+                },
+                div1Handler() {
+                    console.log("这是触发了 div1事件")
+                },
+                div2Handler() {
+                    console.log("这是触发了 div2事件")
+                },
+                bntHanderl() {
+                    console.log("这是触发了  bntHanderl事件")
+                }
+
+            },
+        })
+    </script>
+</body>
+
+</html>

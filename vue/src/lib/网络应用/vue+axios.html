@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios@0.21.0/dist/axios.min.js"></script>
+    <script src="../../lib/instruction/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- https://autumnfish.cn/api/joke -->
+    <div id="add">
+        <button @click="getjoke">获取</button>
+        <p v-text="jokee"></p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#add',
+            data: {
+                jokee: "等待获取数据",
+            },
+            methods: {
+                getjoke() {
+                    // console.log(this.jokee)
+                    var that = this;
+                    axios.get("https://autumnfish.cn/api/joke").then(
+                        function (response) {
+                            console.log(response.data);
+                            that.jokee = response.data;
+                        },
+                        function (err) {
+                            console.log(err);
+                        }
+                    )
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

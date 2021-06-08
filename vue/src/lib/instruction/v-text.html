@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-text="message">hello!</h1>
+        <h1>hello!{{messenger}}</h1>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: '替换div里面的所有文本',
+                messenger: '只替换花括号里的表达式',
+            }
+        });
+    </script>
+</body>
+
+</html>

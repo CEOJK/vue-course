@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监听器</title>
+    <script src="../vue.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <p>{{mun}}</p>
+        <button @click="add()">加</button>
+        <button @click="del()">减</button>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#container",
+            data: {
+                mun: 0
+            },
+            watch: {
+                mun(newdata, olddata) {
+                    console.log(newdata, olddata)
+                    if (newdata < 0) {
+                        this.mun = 0
+                    }
+                }
+            },
+            methods: {
+                add() {
+                    this.mun++
+                },
+                del() {
+                    this.mun--
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

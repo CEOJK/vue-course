@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show</title>
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <div id="show">
+        <button @click="test">点击</button>
+        <h1 v-show="defaults">{{message}}</h1>
+        <button @click="test1">点击</button>
+        <h2 v-show="number>=18">{{message1}}</h2>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#show',
+            data: {
+                message: "根据表达式的真假，切换显示与影藏",
+                message1: "原理修改元素display,实现显示与隐藏",
+                defaults: false,
+                number: 17
+            },
+            methods: {
+                test() {
+                    this.defaults = !this.defaults;
+                },
+                test1() {
+                    this.number++;
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

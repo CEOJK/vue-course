@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+    <style>
+        .center {
+            width: 1180px;
+            height: 950px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .left {
+            width: 60px;
+            height: 120px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 40px;
+            text-align: center;
+            /*水平居中*/
+            line-height: 120px;
+            /*垂直居中*/
+            position: absolute;
+            top: 50%;
+            margin-top: -60px;
+            cursor: pointer;
+            /*鼠标样式*/
+        }
+
+        .right {
+            width: 60px;
+            height: 120px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 40px;
+            text-align: center;
+            /*水平居中*/
+            line-height: 120px;
+            /*垂直居中*/
+            position: absolute;
+            top: 50%;
+            margin-top: -60px;
+            cursor: pointer;
+            /*鼠标样式*/
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mask">
+        <div class="center">
+            <!-- 图片 -->
+            <img :src="imgArr[index]" alt="" />
+            <!-- 左箭头 -->
+            <div class="left" v-show="index!=0" @click="prev()">
+                < </div> <!-- 右箭头 -->
+                    <div class="right" v-show="index<imgArr.length-1" @click="next()">
+                        >
+                    </div>
+            </div>
+
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#mask',
+                data: {
+                    imgArr: [
+                        "../instruction/img/1.jpg",
+                        "../instruction/img/2.jpg",
+                        "../instruction/img/3.jpg",
+                        "../instruction/img/4.jpg",
+                        "../instruction/img/5.jpg",
+                        "../instruction/img/6.jpg",
+                    ],
+                    index: 0
+                },
+                methods: {
+                    prev() {
+                        this.index--;
+                    },
+                    next() {
+                        this.index++;
+                    },
+                },
+            });
+        </script>
+</body>
+
+</html>

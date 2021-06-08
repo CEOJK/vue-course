@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+</head>
+
+
+<body>
+    <!--
+    有名字的插槽---具名插槽
+         slot标签有一个name属性: 就是这个slot起个名字
+         对应的组件中写一个template标签,
+            有个属性v-slot
+            v-slot:对应名字
+    没有名字的插槽---匿名插槽
+
+-->
+
+    <div id="container">
+        <headnav>
+            <!-- 通过 v-slot:footer='props'中的 props.data 调用数据 -->
+            <template v-slot:header="a">
+                <h1>{{a.header}}</h1>
+            </template>
+
+            <p>A paragraph for the main content.</p>
+            <p>And another one.</p>
+            <!-- 通过 v-slot:footer='props'中的 props.data 调用数据 -->
+            <template v-slot:footer='b'>
+                <h2>{{b.footer}}</h2>
+
+            </template>
+        </headnav>
+    </div>
+    <template id="box">
+        <div>
+            <header>
+                <!-- 将数据动态绑定到slot -->
+                <slot name="header" :header="mag"></slot>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+            <footer>
+                <!-- 将数据动态绑定到slot -->
+                <slot name="footer" :footer="mag1"></slot>
+            </footer>
+        </div>
+    </template>
+    <script>
+        let aaa = {
+            template: `#box`,
+            data() {
+                return {
+                    mag: '组件的头部',
+                    mag1: '组件的底部'
+                }
+            },
+        }
+        let vm = new Vue({
+            el: '#container',
+            data: {
+
+            },
+            methods: {
+
+            },
+            components: {
+                headnav: aaa
+            }
+        })
+        /*
+         *   子组件的msg传到父组件中使用
+         *       怎么传值: slot标签 通过 v-bind:msgdata="msg"
+         *       v-bind:msgdata="msg" 就相当于是一个对象 {msgdata:msg}
+         *      在父组件中使用: v-slot:名字="props"  {{props.msgdata}}
+         *       props 相当于  形参
+         *       v-bind:msgdata="msg"  相当于实参
+         *
+         *
+         *
+         *       匿名插槽和有名插槽不要嵌套使用,坚决不允许,通过template分开
+         *     插槽传值参:
+         *       通过作用域插槽 v-slot 让父组件可以访问都子组件中的数据
+         * */
+    </script>
+</body>
+
+</html>

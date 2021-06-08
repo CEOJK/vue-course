@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <div id="att">
+        <button @click="getmessage">点击</button>
+        <input type="text" name="" id="" v-model="message" style="width: 300px;" @keyup.enter="getm">
+        <h1>{{message}}</h1>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#att",
+            data: {
+                message: "获取和设置表单元素的值(双向数据绑定)",
+                me: "v-model指令的作用是便捷的设置和获取表单元素的值",
+                text: "绑定的数据会和表单元素值相关联",
+                text: "绑定的数据<————>表单元素的值",
+            },
+            methods: {
+                getm() {
+                    alert(this.message);
+                },
+                getmessage() {
+                    this.message = "绑定的数据会和表单元素值相关联";
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

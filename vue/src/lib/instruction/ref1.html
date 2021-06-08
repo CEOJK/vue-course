@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    -->
+    <div id="app">
+        <p v-cloak>{{content}}</p>
+        <p v-text="content"></p>
+        <!--p.textContent = content-->
+        <p v-html="content"></p>
+        <!--p.innerHTML = content-->
+        <!-- //ref 是绑定了唯一的元素  可以调用其属性 textContent innerHTML 等 -->
+        <p ref="msg">abcd</p>
+        <button @click="hint">提示</button>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                content: '<a href="http://www.baidu.com">百度一下</a>'
+            },
+            methods: {
+                hint() {
+                    alert(this.$refs.msg.innerHTML);
+                    console.log(this.$refs.msg.textContent);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

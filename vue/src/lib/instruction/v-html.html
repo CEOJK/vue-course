@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #male{
+            color: blue;
+        } */
+    </style>
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <div id="male" v-html="a">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#male',
+            data: {
+                a: `<p style="color:blue">可以更新元素的innerHMTL，按照普通HTML元素插入；可以利用{{变量}}绑定数据</p>`,
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+
+</html>

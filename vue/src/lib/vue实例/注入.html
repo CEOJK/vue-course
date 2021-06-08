@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注入</title>
+    <script src="../instruction/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="add">
+        <h1>{{a}}</h1>
+        <p v-html="html"></p>
+        <ul>
+            <li v-for="(itme,i) in b">
+                名称:{{itme.name}}
+                <button @click="itme.age--">-</button>
+                <span>年龄:{{itme.age}}</span>
+                <button @click="itme.age++">+</button>
+                <button @click=" deleat(i)">删除</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#add',
+            data: {
+                html: "<p style='color:red;'>黄色</p>",
+                a: "实例",
+                b: [{
+                        name: '小明',
+                        age: 19
+                    },
+                    {
+                        name: '小明',
+                        age: 19
+                    },
+                    {
+                        name: '小明',
+                        age: 19
+                    },
+                ],
+            },
+            methods: {
+                deleat(i) {
+                    this.b.splice(i, 1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

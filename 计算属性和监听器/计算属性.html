@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        姓:
+        <input type="text" v-model='xing'><br />
+        名:
+        <input type="text" v-model='ming'><br />
+
+        姓名(单向):
+        <input type="text" v-model='xingming'>
+        姓名(双向):
+        <input type="text" v-model='xingming1'>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#container',
+            data: {
+                xing: '',
+                ming: '',
+            },
+            computed: {
+                xingming() {
+                    return this.xing + " " + this.ming
+                },
+                xingming1: {
+                    get() {
+                        return this.xing + " " + this.ming
+                    },
+                    set(vlet) {
+                        var a = vlet.split(' ')
+                        this.xing = a[0],
+                            this.ming = a[1]
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

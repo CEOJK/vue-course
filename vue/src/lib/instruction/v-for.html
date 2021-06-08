@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <!-- v-for指令的作用是:根据数据生成列表结构
+          数组经常和v-for指令结合使用
+          语法是(item,index) in 数据 
+          item和index 可以结合其他指令一起使用
+          数组长度的更新会同步到页面上，是响应式的 -->
+    <!-- item表示每条数据 ， index表示每一条的下标 -->
+    <div id="female">
+        <ul>
+            <li v-for="(item,index) in c">
+                {{index+1}} 名字:{{item.name}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#female',
+            data: {
+                c: [{
+                        name: "小明",
+                        age: 19
+                    },
+                    {
+                        name: "小明",
+                        age: 19
+                    },
+                    {
+                        name: "小明",
+                        age: 19
+                    },
+                ],
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+
+</html>

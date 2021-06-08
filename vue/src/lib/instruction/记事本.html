@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../instruction/vue.min.js"></script>
+    <style>
+        .header {
+            width: 308px;
+            /* background-color: blue; */
+            text-align: center;
+            height: 100px;
+            margin: 0 auto;
+            /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); */
+        }
+
+        /* input */
+        .new-todo {
+            width: 300px;
+            height: 30px;
+            outline: none;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+        }
+
+        /* ul */
+        .todo-list {
+            width: 268px;
+            /* background-color: blueviolet; */
+            list-style-type: none;
+            margin-top: 0px;
+            margin: 0 auto;
+
+
+        }
+
+        /* li */
+        .todo {
+            /* background-color: brown; */
+            width: 308px;
+            position: relative;
+            right: 40px;
+            border: solid 1px blue;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+        }
+
+
+
+        /* button */
+        .destroy {
+            float: right;
+            height: 20px;
+            background-color: white;
+            /* 去除button边框 */
+            border: none;
+            /* 点击后去除button边框 */
+            outline: none;
+            color: gray;
+        }
+
+        /* footer */
+        .footer {
+            margin: 0 auto;
+            width: 308px;
+        }
+
+        /* span */
+        .todo-count {
+            left: 0;
+        }
+
+        /* button */
+        .clear-completed {
+            float: right;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+            border-left: none;
+            outline: none;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 主体区域 -->
+    <section id="todoapp">
+        <!-- 输入框 -->
+        <header class="header">
+            <h1>记事本</h1>
+            <input v-model="message" @keyup.enter="getmessage" autofocus="autofocus" autocomplete="off"
+                placeholder="请输入任务" class="new-todo">
+        </header>
+        <!-- 列表区域 -->
+        <section class="mian">
+            <ul class="todo-list">
+                <li class="todo" v-for="(item,index) in list">
+                    <div class="view">
+                        <span class="index">{{index+1}}</span>
+                        <label>{{item}}</label>
+                        <button class="destroy" @click="remove(index)">x</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!-- 统计和清空 -->
+        <footer class="footer">
+            <span class="todo-count" v-show="list.length!=0">
+                <strong>{{list.length}}</strong>items left</span>
+            <button class="clear-completed" @click="Clear" v-show="list.length!=0">
+                Clear
+            </button>
+        </footer>
+        <!-- 底部 -->
+        <footer class="info">
+        </footer>
+    </section>
+    <script>
+        var vm = new Vue({
+            el: '#todoapp',
+            data: {
+                list: ["写代码", "吃饭", "睡觉"],
+                message: "敲代码"
+            },
+            methods: {
+                getmessage() {
+                    this.list.push(this.message)
+                },
+                remove(index) {
+                    this.list.splice(index, 1)
+                },
+                Clear() {
+                    this.list = [];
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
